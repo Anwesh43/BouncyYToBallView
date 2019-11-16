@@ -183,4 +183,26 @@ class BouncyYToBallView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BouncyYToBallView) {
+
+        private val animator : Animator = Animator(view)
+        private val btb : BouncyYToBall = BouncyYToBall(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            btb.draw(canvas, paint)
+            animator.animate {
+                btb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            btb.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
