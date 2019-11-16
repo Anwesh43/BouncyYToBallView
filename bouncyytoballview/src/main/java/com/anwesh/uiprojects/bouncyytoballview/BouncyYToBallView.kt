@@ -206,4 +206,12 @@ class BouncyYToBallView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BouncyYToBallView {
+            val view : BouncyYToBallView = BouncyYToBallView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
