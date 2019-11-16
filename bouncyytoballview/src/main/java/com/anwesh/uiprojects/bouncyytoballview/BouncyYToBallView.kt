@@ -29,12 +29,12 @@ fun Float.sinify() : Float = Math.sin(this * Math.PI).toFloat()
 
 fun Canvas.drawBouncyYToBall(scale : Float, size : Float, paint : Paint) {
     val sf : Float = scale.divideScale(0, 2).sinify()
-    val sc2 : Float = scale.divideScale(1, 2).sinify()
+    val sc2 : Float = scale.divideScale(1, 2)
     val r : Float = size / rFactor
     for (j in 0..(lines - 1)) {
         save()
         rotate((360f / lines) * j)
-        drawLine(0f, 0f, 0f, size, paint)
+        drawLine(0f, 0f, 0f, size * sf, paint)
         restore()
     }
     drawCircle(0f, 0f, r * sc2, paint)
